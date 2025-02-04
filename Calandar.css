@@ -1,0 +1,30 @@
+header{
+    background-color: rgb(53, 32, 24);
+    color: rgb(80,125,158);
+    padding: 25px 10px;
+    margin: 25px 0px;
+    text-align: center;
+    font-size: 25px;
+}
+
+body{
+    background-color:rgb(211,154,107);
+    color: rgb(157, 71, 68);
+    display: grid;
+}
+
+p{
+    color: rgb(157, 71, 68);    
+}
+
+button{
+    background-color: rgb(53, 32, 24);
+    color: rgb(80,125,158);
+    padding: 15px 40px;
+    margin: 45px 10px;
+    font-size: 20px;
+    grid-row-start: 2;
+}
+.img_holder{
+    text-align: center;
+}

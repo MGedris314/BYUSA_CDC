@@ -1,0 +1,72 @@
+header{
+    background-color: rgb(53, 32, 24);
+    color: rgb(80,125,158);
+    padding: 25px 10px;
+    margin: 25px 0px;
+    text-align: center;
+}
+
+body{
+    background-color:rgb(211,154,107);
+    color: rgb(80,125,158);
+}
+
+p{
+    color: black;    
+}
+
+button{
+    background-color: rgb(53, 32, 24);
+    color: rgb(80,125,158);
+    padding: 60px 60px;
+    font-size: 30px;
+}
+
+.button_grid{
+    display: grid;
+    gap: 100px 20px;
+    text-align: center;
+}
+
+.calandar{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+}
+
+.waver{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+
+}
+
+.club_link{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+
+}
+.log_in{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+
+}
+.social{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+
+}
+
+.link{
+    padding: 10px;
+}
+/* Color pallett options
+rgb(209,153,101) Background
+rgb(141,78,22)
+rgb(211,154,107) //Reset this one.
+rgb(80,125,158) Header text
+rgb(53, 32, 24) Header
+*/
