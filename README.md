@@ -72,26 +72,26 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - Built out the required pages for functionality
+- [x] **Proper HTML element usage** - As far as I can tell the HTML syntax is correct.
+- [x] **Links** - I've linked buttons to other HTML pages.
+- [x] **Text** - Not sure what you want on this one, but there's text on my pages.
+- [x] **3rd party API placeholder** - Place holder is on the Calandar page.
+- [x] **Images** - Place holding images at this point, but they're there.
+- [x] **Login placeholder** - See Admin_login.
+- [x] **DB data placeholder** - There will be a place on the calandar page that holds information for when admins are loged in to edit the calandar.
+- [x] **WebSocket placeholder** - On the calandar page where updates will be posted.
 
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - Didn't feel there was a need for a footer for this project, but head and body are there.
+- [x] **Navigation elements** - Buttons from last time.
+- [x] **Responsive to window resizing** - They respond.
+- [x] **Application elements** - Not entirely sure what this was supposed to be, but I think I got it done.
+- [x] **Application text content** - Not entirely sure what this was supposed to be, but I think I got it done.
+- [x] **Application images** - Not entirely sure what this was supposed to be, but I think I got it done.
 
 ## 🚀 React part 1: Routing deliverable
 
