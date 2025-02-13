@@ -1,7 +1,7 @@
 import React from "react";
 import './Home.css';
 
-export default function App(){
+export default function Home(){
     return <div classNameName='body bg-dark text-light'>
     <title>BYU CSCD</title>
     <header>
@@ -42,6 +42,11 @@ export default function App(){
     <a href="https://github.com/MGedris314/BYUSA_CDC" target="_blank" className="link">
         <p>
             github repository
+        </p>
+    </a>
+    <a >
+        <p>
+            Matthew Gedris
         </p>
     </a>
     </footer>

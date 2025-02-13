@@ -1,37 +1,45 @@
 import React from "react";
 import './Home/Home.css';
 
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import {Home} from './Home/Home';
+import { Calandar } from './Calandar/Calandar';
+import { Admin } from './Admin/Admin';
+
+
+
 export default function App(){
-    return <div classNameNameName='body bg-dark text-light'>
+    return (<BrowserRouter>
+    <div className='body bg-dark text-light'>
     <title>BYU CSCD</title>
     <header>
         <h1>
             BYU Country swing dance club home page
         </h1>
     </header>
-    <nav classNameName="button_grid">
-    <a href="Calandar.html" classNameName="calandar">
+    <nav className="button_grid">
+    <NavLink to="/Calandar" className="Calandar">
         <button>
             Calandar view
         </button>
-    </a>
-    <a classNameName="waver">
+    </NavLink>
+    <a className="waver">
         <button>
             Link to waver
         </button>
 
     </a>
-    <a href="https://clubs.byu.edu/link/Clubs/CSD" target="_blank" classNameName="club_link">
+    <a href="https://clubs.byu.edu/link/Clubs/CSD" target="_blank" className="club_link">
         <button>
             Join the club
         </button>
     </a>
-    <a href="Admin_login.html" classNameName="log_in">
+    <NavLink to="/Admin" className="Admin">
         <button>
             Instructor Log in
         </button>
-    </a>
-    <a classNameName="social">
+    </NavLink>
+    <a className="social">
         <button>
             Instagram link
         </button>
@@ -39,12 +47,24 @@ export default function App(){
     </a>
     </nav>
     <footer>
-    <a href="https://github.com/MGedris314/BYUSA_CDC" target="_blank" classNameName="link">
+    <a href="https://github.com/MGedris314/BYUSA_CDC" target="_blank" className="link">
         <p>
             github repository
         </p>
     </a>
+    <a>
+        <p>
+            Matthew Gedris
+        </p>
+    </a>
     </footer>
-    </div>;
+    <Routes>
+        <Route path='/' element={<Home />} exact />
+        <Route path='/Calandar' element={<Calandar />} />
+        <Route path='/Admin' element={<Admin />} />
+
+    </Routes>
+    </div>
+    </BrowserRouter>)
 }
 
