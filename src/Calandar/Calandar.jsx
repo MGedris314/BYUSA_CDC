@@ -1,7 +1,7 @@
 import React from "react";
 import './Calandar.css';
 
-export default function Calandar(){
+export function Calandar(){
     return <div classNameName='body bg-dark text-light'>
         <div class="img_holder">
         <img src="Blank.jpg" alt="Put calandar here"></img>
@@ -18,6 +18,6 @@ export default function Calandar(){
     <p>
         If they are loged in as an admin, they will be able to edit the calandar here.
     </p>
-</a>
+    </a>
     </div>
 }

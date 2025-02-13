@@ -16,7 +16,7 @@ export default function App(){
         <h1>
             BYU Country swing dance club home page
         </h1>
-    </header>
+    <menu className='navbar-nav'>
     <nav className="button_grid">
     <NavLink to="/Calandar" className="Calandar">
         <button>
@@ -46,6 +46,13 @@ export default function App(){
 
     </a>
     </nav>
+    </menu>
+    </header>
+    <Routes>
+        <Route path='/' element={<Home />} exact />
+        <Route path='/Calandar' element={<Calandar />} />
+        <Route path='/Admin' element={<Admin />} />
+    </Routes>
     <footer>
     <a href="https://github.com/MGedris314/BYUSA_CDC" target="_blank" className="link">
         <p>
@@ -58,13 +65,7 @@ export default function App(){
         </p>
     </a>
     </footer>
-    <Routes>
-        <Route path='/' element={<Home />} exact />
-        <Route path='/Calandar' element={<Calandar />} />
-        <Route path='/Admin' element={<Admin />} />
-
-    </Routes>
     </div>
-    </BrowserRouter>)
+    </BrowserRouter>);
 }
 

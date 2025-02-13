@@ -1,15 +1,17 @@
 import React from "react";
 import './Admin.css';
 
-export default function Admin(){
-    return <div className='body bg-dark text-light'>
-<div class="Fields">
+export function Admin(){
+    return( 
+    <main>
+    <div className='body bg-dark text-light'>
+    <div className="Fields">
     <label for="username">Username</label>
         <input type="text" id="username" name="username"></input>
     <label for="password">Password</label>
         <input type="text" id="password" name="password"></input>
     </div>
-    <div class="buttons">
+    <div className="buttons">
     <button>
         Log in
     </button>
@@ -23,4 +25,6 @@ export default function Admin(){
     </a>
     </div>
     </div>
+    </main>
+    );
 }
