@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Admin.css';
 
 export function Admin(){
@@ -18,11 +19,11 @@ export function Admin(){
     <button>
         Register
     </button>
-    <a href="index.html">
+    <Link to="/">
         <button>
             Home
         </button>
-    </a>
+    </Link>
     </div>
     </div>
     </main>

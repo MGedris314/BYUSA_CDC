@@ -97,9 +97,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - We're close, a few final tweaks and we should get it.
-- [ ] **Router** - It's a work in progress, but I'm getting there.
+- [x] **Bundled using Vite** - I was told that it bundles automatically with the push code.
+- [x] **Components** - All have been moved over.
+- [x] **Router** - Routers are working.
 
 ## 🚀 React part 2: Reactivity
 

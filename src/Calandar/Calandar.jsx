@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Calandar.css';
 
 export function Calandar(){
@@ -11,13 +12,13 @@ export function Calandar(){
             Websocket updates regarding club anouncements and who's teaching that week.
         </p>
     </div>
-    <a href="index.html">
-    <button>
-        Return to home page.
-    </button>
+    <Link to="/">
+        <button>
+            Home
+        </button>
+    </Link>
     <p>
         If they are loged in as an admin, they will be able to edit the calandar here.
     </p>
-    </a>
     </div>
 }
