@@ -20,7 +20,7 @@ export function Admin(){
     </button>
     <a href="index.html">
         <button>
-            Back
+            Home
         </button>
     </a>
     </div>

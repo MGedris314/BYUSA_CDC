@@ -1,13 +1,12 @@
 header{
-    background-color: rgb(53, 32, 24);
+    background-color: rgb(211,154,107);
     color: rgb(80,125,158);
     padding: 25px 10px;
-    margin: 25px 0px;
     text-align: center;
 }
 
 body{
-    background-color:rgb(211,154,107);
+    background-color:rgb(53, 32, 24);
     color: rgb(80,125,158);
 }
 
@@ -22,7 +21,7 @@ button{
     font-size: 30px;
 }
 
-.button_grid{
+/* .button_grid{
     display: grid;
     gap: 100px 20px;
     text-align: center;
@@ -58,7 +57,7 @@ button{
     grid-column-end: 4;
     grid-row-start: 2;
 
-}
+} */
 
 .link{
     padding: 10px;
