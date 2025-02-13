@@ -20,5 +20,10 @@
   "homepage": "https://github.com/MGedris314/BYUSA_CDC#readme",
   "devDependencies": {
     "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5"
   }
 }
