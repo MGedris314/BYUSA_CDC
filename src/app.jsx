@@ -20,7 +20,7 @@ export default function App(){
     <nav className="button_grid">
     <NavLink to="/Calandar" className="Calandar">
         <button>
-            Club calandar
+            Club calendar
         </button>
     </NavLink>
     <a className="waver">

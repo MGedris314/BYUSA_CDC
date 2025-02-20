@@ -5,7 +5,7 @@ import './Calandar.css';
 export function Calandar(){
     return <div classNameName='body bg-dark text-light'>
         <div class="img_holder">
-        <img src="Blank.jpg" alt="Put calandar here"></img>
+        <img src="Blank.jpg" alt="Put calendar here"></img>
     </div>
     <div>
         <p>
@@ -18,7 +18,7 @@ export function Calandar(){
         </button>
     </Link>
     <p>
-        If they are loged in as an admin, they will be able to edit the calandar here.
+        If they are loged in as an admin, they will be able to edit the calendar here.
     </p>
     </div>
 }
