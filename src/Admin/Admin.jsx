@@ -11,13 +11,12 @@ export function Admin(){
         <input type="text" id="username" name="username"></input>
     <label for="password">Password</label>
         <input type="text" id="password" name="password"></input>
+    <label for="Adminkey">Admin key</label>
+        <input type="text" id="Admin" name="Admin"></input>
     </div>
     <div className="buttons">
     <button>
         Log in
-    </button>
-    <button>
-        Register
     </button>
     <Link to="/">
         <button>
