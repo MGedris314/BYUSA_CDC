@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {useState} from "react";
 import './Admin.css';
 
 export function Admin(){
@@ -17,6 +18,9 @@ export function Admin(){
     <div className="buttons">
     <button>
         Log in
+    </button>
+    <button>
+        log out
     </button>
     <Link to="/">
         <button>

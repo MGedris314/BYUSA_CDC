@@ -9,6 +9,8 @@ import { Admin } from './Admin/Admin';
 
 
 export default function App(){
+
+
     return (<BrowserRouter>
     <div className='body bg-dark text-light'>
     <title>BYU CSCD</title>

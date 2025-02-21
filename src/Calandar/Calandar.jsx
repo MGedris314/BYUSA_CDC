@@ -20,5 +20,8 @@ export function Calandar(){
     <p>
         If they are loged in as an admin, they will be able to edit the calendar here.
     </p>
+    <button>
+        Edit calendar
+    </button>
     </div>
 }
