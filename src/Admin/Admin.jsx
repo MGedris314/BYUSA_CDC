@@ -2,8 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {useState} from "react";
 import './Admin.css';
+import { AuthState } from './authState'
 
 export function Admin(){
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || ''); //Java script setting a variable for Username storing locallly
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated; //Set up an authroizing token
+    const [authState, setAuthState] = React.useState(currentAuthState);
     return( 
     <main>
     <div className='body bg-dark text-light'>
