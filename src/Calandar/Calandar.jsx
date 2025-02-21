@@ -5,25 +5,26 @@ import Calendar from 'react-calendar';
 import './Calandar.css';
 
 export function Calandar(){
-    return <div classNameName='body bg-dark text-light'>
-        <div class="img_holder">
-        <img src="Blank.jpg" alt="Put calendar here"></img>
-    </div>
-    <div>
+    const [date, setDate] = useState(new Date());
+
+    return (
+      <div className='body bg-dark text-light'>
+        <div className="img_holder">
+          <Calendar onChange={setDate} value={date} />
+          <p>Selected date: {date.toDateString()}</p>
+        </div>
+        <div>
+          <p>
+            Websocket updates regarding club announcements and who's teaching that week.
+          </p>
+        </div>
+        <Link to="/">
+          <button>Home</button>
+        </Link>
         <p>
-            Websocket updates regarding club anouncements and who's teaching that week.
+          If logged in as an admin, they can edit the calendar here.
         </p>
-    </div>
-    <Link to="/">
-        <button>
-            Home
-        </button>
-    </Link>
-    <p>
-        If they are loged in as an admin, they will be able to edit the calendar here.
-    </p>
-    <button>
-        Edit calendar
-    </button>
-    </div>
+        <button>Edit calendar</button>
+      </div>
+    );
 }
