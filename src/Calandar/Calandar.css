@@ -28,3 +28,8 @@ button{
 .img_holder{
     text-align: center;
 }
+
+.img_holder button{
+    color: azure;
+    background-color: black;
+}
