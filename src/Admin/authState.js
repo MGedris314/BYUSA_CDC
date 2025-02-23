@@ -1,3 +1,7 @@
+// Variables
+let admin_loggedin= true;
+
+// Exported functions
 export class AuthState {
     static Unknown = new AuthState('unknown');
     static Authenticated = new AuthState('authenticated');
