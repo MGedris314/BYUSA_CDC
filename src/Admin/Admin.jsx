@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {useState} from "react";
 import './Admin.css';
-import { AuthState } from './authState'
+import { AuthState } from './authState';
+import { log_off } from './authState';
+import { log_on } from './authState'
 
 export function Admin(){
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || ''); //Java script setting a variable for Username storing locallly
@@ -20,10 +22,10 @@ export function Admin(){
         <input type="text" id="Admin" name="Admin"></input>
     </div>
     <div className="buttons">
-    <button>
+    <button onClick={log_on}>
         Log in
     </button>
-    <button>
+    <button onClick={log_off}>
         log out
     </button>
     <Link to="/">
