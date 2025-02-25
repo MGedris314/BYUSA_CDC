@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {useState} from "react";
 import Calendar from 'react-calendar';
 import './Calandar.css';
-import { edditor } from "./Calendar";
 
-export function Calandar(){
+export function Calandar() {
     const [date, setDate] = useState(new Date());
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
       <div className='body bg-dark text-light'>
@@ -25,7 +32,12 @@ export function Calandar(){
         <p>
           If logged in as an admin, they can edit the calendar here.
         </p>
-        <button onClick={edditor}>Edit calendar</button>
+        <button onClick={openModal}>Edit calendar</button>
+        {isModalOpen && (
+          <div className="modal-content">
+            <button id="close" onClick={closeModal}>&times;</button>
+          </div>
+        )}
       </div>
     );
-}
+  }

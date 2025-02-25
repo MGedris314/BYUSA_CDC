@@ -7,9 +7,13 @@ import { log_off } from './authState';
 import { log_on } from './authState'
 
 export function Admin(){
-    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || ''); //Java script setting a variable for Username storing locallly
-    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated; //Set up an authroizing token
-    const [authState, setAuthState] = React.useState(currentAuthState);
+    const [adminKey, setAdminKey] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [authState, setAuthState] = useState(false);
+    const handleUsernameChange = (e) => setUsername(e.target.value);
+    const handlePasswordChange = (e) => setPassword(e.target.value);
+    const handleAdminKeyChange = (e) => setAdminKey(e.target.value);
     return( 
     <main>
     <div className='body bg-dark text-light'>

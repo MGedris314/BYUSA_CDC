@@ -7,6 +7,10 @@ header{
     font-size: 25px;
 }
 
+#pop_out{
+    display: none;
+}
+
 body{
     background-color:rgb(211,154,107);
     color: rgb(157, 71, 68);
