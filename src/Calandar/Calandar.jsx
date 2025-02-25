@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {useState} from "react";
 import Calendar from 'react-calendar';
 import './Calandar.css';
+import { edditor } from "./Calendar";
 
 export function Calandar(){
     const [date, setDate] = useState(new Date());
@@ -24,7 +25,7 @@ export function Calandar(){
         <p>
           If logged in as an admin, they can edit the calendar here.
         </p>
-        <button>Edit calendar</button>
+        <button onClick={edditor}>Edit calendar</button>
       </div>
     );
 }

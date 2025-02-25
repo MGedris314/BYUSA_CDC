@@ -1,5 +1,5 @@
 // Variables
-let admin_loggedin= false;
+export let admin_loggedin= false;
 
 // Exported functions
 export class AuthState {
