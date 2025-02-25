@@ -10,6 +10,7 @@ export function Admin(){
     const [adminKey, setAdminKey] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const [user, setUser] = useState(localStorage.getItem('user') || null)
     const [authState, setAuthState] = useState(false);
     const handleUsernameChange = (e) => setUsername(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -17,6 +18,19 @@ export function Admin(){
 
     function log_user(){
         console.log("loged in")
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        localStorage.setItem('adminKey', adminKey);
+
+        localStorage.setItem('logged_in', 'true');
+        //setUsername('');
+    }
+    function log_out(){
+        setUsername('');
+        setAdminKey('');
+        setPassword('');
+
+        localStorage.setItem('logged_in','false')
     }
     function User_Change(e){
         setUsername(e.target.value);
@@ -25,7 +39,7 @@ export function Admin(){
         setPassword(e.target.value);
     }
     function Key_Change(e){
-        setAdminKey(e.target.value);
+        setAdminKey(e.target.value);        
     }
     return( 
     <main>
@@ -33,19 +47,16 @@ export function Admin(){
     <div className="Fields">
     <label for="username">Username</label>
         <input type="text" id="username" name="username" onChange={User_Change}></input>
-        <div>{username}</div>
     <label for="password">Password</label>
         <input type="text" id="password" name="password" onChange={Pass_Change}></input>
-        <div>{password}</div>
     <label for="Adminkey">Admin key</label>
         <input type="text" id="Admin" name="Admin" onChange={Key_Change}></input>
-        <div>{adminKey}</div>
     </div>
     <div className="buttons">
-    <button onClick={log_on}>
+    <button onClick={log_user}>
         Log in
     </button>
-    <button onClick={log_off}>
+    <button onClick={log_out}>
         log out
     </button>
     <Link to="/">
