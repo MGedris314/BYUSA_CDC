@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Calendar from 'react-calendar';
 import './Calandar.css';
@@ -6,9 +6,20 @@ import './Calandar.css';
 export function Calandar() {
     const [date, setDate] = useState(new Date());
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [logged_in, setIsloggedIn]=useState(false);
+
+    useEffect(()=>{
+      const loggedIn=localStorage.getItem('logged_in')==='true';
+      setIsloggedIn(loggedIn);
+    }, []);
 
     const openModal = () => {
+      if (logged_in){
         setIsModalOpen(true);
+      }
+      else {
+        alert("To eddit callendar, you must be logged in.")
+      }
     };
 
     const closeModal = () => {
