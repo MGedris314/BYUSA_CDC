@@ -71,7 +71,7 @@ export function Calandar() {
       <div className='body bg-dark text-light'>
         <div className="img_holder">
           <Calendar onChange={setDate} value={date} onClickDay={change_day} 
-          tileContent={render_event} />
+          tileContent={render_event} calendarType="gregory" />
           <p>Selected date: {date.toDateString()}</p>
         </div>
         <div>

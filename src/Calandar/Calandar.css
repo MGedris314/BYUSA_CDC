@@ -29,11 +29,14 @@ button{
     font-size: 20px;
     grid-row-start: 2;
 }
+
 .img_holder{
     text-align: center;
 }
 
 .img_holder button{
-    color: azure;
-    background-color: black;
+    color: rgb(211, 250, 250);
+    background-color: rgb(228, 154, 25);
+    font-size: 15px;
+    margin-left: auto;
 }
