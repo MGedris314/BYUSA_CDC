@@ -22,7 +22,8 @@ export default function App(){
             Club calendar
         </button>
     </NavLink>
-    <a className="waver">
+    <a href="https://secure.na2.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhB1FZhlslpwFRVnDnaXSBRkD5YthGrFJwQvQ3aPb7DIvW2bpQlCdWjs_nhzJqXryBw*" 
+        target="_blank" className="waver">
         <button>
             Link to waver
         </button>
