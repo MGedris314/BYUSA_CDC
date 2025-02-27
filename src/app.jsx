@@ -7,10 +7,7 @@ import { Calandar } from './Calandar/Calandar';
 import { Admin } from './Admin/Admin';
 
 
-
 export default function App(){
-
-
     return (<BrowserRouter>
     <div className='body bg-dark text-light'>
     <title>BYU CSCD</title>
@@ -45,7 +42,6 @@ export default function App(){
         <button>
             Instagram link
         </button>
-
     </a>
     </nav>
     </menu>
