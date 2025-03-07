@@ -1,9 +1,9 @@
 // Okay In this file (until I learn otherwise) I'm going to be dropping all of my JS code to make this thing run.
 
-//  To start I'll be taking the script from login in class that creates a hashed password, we'll work on storing it later.
-
+//  To start I'll be taking the script from login in class that creates a hashed password, we'll work on storing it later. Objective 6 (30 pts)
 const bcrypt = require('bcryptjs');
 const express = require('express');
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 const app = express();
 
 app.use(express.json());
@@ -27,4 +27,5 @@ app.put('/login', async (req, res) => {
 
 
 //  Static middle ware syntax is as follows:
-//  app.use(express.static('name of directory to be used aka root.'))
+//  app.use(express.static('name of directory to be used aka root.'))  Objective 2 (10 pts)
+
