@@ -19,7 +19,32 @@ export function Admin(){
     let registered_users={};
     const correct_key=8675309;
     
+    const Chuck = () => {
+        const [joke, set_joke]=useState(null);
+        useEffect(()=>{
+            const fetch_chuck=async() => {
+                const url ="https://api.chucknorris.io/jokes/random?category=dev";
+                try{
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    set_joke(data);
+                }catch(error){
+                    console.log("We have this error, but Chuck Norris doesn't", error);
+                }
+            };
+            fetch_chuck();
+        }, [])
 
+    return (
+        <div>
+        {joke ? (
+        <pre>{JSON.stringify(joke, null, 2)}</pre>
+        ) : (
+        <p>Loading...</p>
+        )}
+        </div>
+    );
+}
 
     function register(){
         if (!registered_users[username] && adminKey===correct_key){

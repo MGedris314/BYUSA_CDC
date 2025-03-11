@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
-
 app.use(express.json());
 app.use(express.static('public'))
 
@@ -16,7 +15,6 @@ app.listen(port, () => {
 });
 
 const users = [];
-
 
 const user = {
   email: email,
