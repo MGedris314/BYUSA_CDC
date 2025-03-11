@@ -1,26 +1,26 @@
 // Okay In this file (until I learn otherwise) I'm going to be dropping all of my JS code to make this thing run.
 
 //  To start I'll be taking the script from login in class that creates a hashed password, we'll work on storing it later. Objective 6 (30 pts)
-import bcrypt from 'bcryptjs';
-import express from 'express';
-import cookieParser from 'cookie-parser';
-
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcryptjs');
+const express = require('express');
+const uuid = require('uuid');
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 app.use(express.static('public'))
 
 app.listen(port, () => {
-  console.log("Listening to port ${port}")
+  console.log(`Listening to port ${port}`)
 });
 
 const users = [];
 
-const user = {
-  email: email,
-  password: passwordHash,
-  token: uuid.v4(),
-};
+// const user = {
+//   email: email,
+//   password: passwordHash,
+//   token: uuid.v4(),
+// };
 
 app.post('/register', async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -37,6 +37,10 @@ app.put('/login', async (req, res) => {
   }
 });
 
+app.get('/test', async (req, res) => {
+  res.status(200)
+}
+)
 
 //  Static middle ware syntax is as follows:
 //  app.use(express.static('name of directory to be used aka root.'))  Objective 2 (10 pts)
