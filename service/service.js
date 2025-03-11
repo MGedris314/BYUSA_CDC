@@ -15,7 +15,14 @@ app.listen(port, () => {
   console.log("Listening to port ${port}")
 });
 
-const passwords = {};
+const users = [];
+
+
+const user = {
+  email: email,
+  password: passwordHash,
+  token: uuid.v4(),
+};
 
 app.post('/register', async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);

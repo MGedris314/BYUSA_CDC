@@ -16,6 +16,21 @@ export function Admin(){
     const handlePasswordChange = (e) => setPassword(e.target.value);
     const handleAdminKeyChange = (e) => setAdminKey(e.target.value);
 
+    let registered_users={};
+    const correct_key=8675309;
+    
+
+
+    function register(){
+        if (!registered_users[username] && adminKey===correct_key){
+            registered_users[username]=password;
+            console.log("registration complete")
+        }
+        else{
+            console.log("User already exists.")
+        }
+    }
+
     async function log_user() {
         try {
           const response = await fetch('http://localhost:4000/login', {
@@ -69,6 +84,9 @@ export function Admin(){
     </button>
     <button onClick={log_out}>
         log out
+    </button>
+    <button onClick={register}>
+        Register
     </button>
     <Link to="/">
         <button>
