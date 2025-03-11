@@ -1,19 +1,19 @@
 // Okay In this file (until I learn otherwise) I'm going to be dropping all of my JS code to make this thing run.
 
 //  To start I'll be taking the script from login in class that creates a hashed password, we'll work on storing it later. Objective 6 (30 pts)
-const bcrypt = require('bcryptjs');
-const express = require('express');
+import bcrypt from 'bcryptjs';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+
 const app = express();
-const cookieParser=requre('cookie-parser');
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
+
+app.use(express.json());
+app.use(express.static('public'))
 
 app.listen(port, () => {
   console.log("Listening to port ${port}")
 });
-
-
-app.use(express.json());
-app.use(express.static('public'))
 
 const passwords = {};
 

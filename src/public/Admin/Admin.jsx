@@ -16,15 +16,26 @@ export function Admin(){
     const handlePasswordChange = (e) => setPassword(e.target.value);
     const handleAdminKeyChange = (e) => setAdminKey(e.target.value);
 
-    function log_user(){
-        console.log("loged in")
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-        localStorage.setItem('adminKey', adminKey);
-
-        localStorage.setItem('logged_in', 'true');
-        //setUsername('');
-    }
+    async function log_user() {
+        try {
+          const response = await fetch('http://localhost:4000/login', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user: username, password: password })
+          });
+      
+          if (!response.ok) {
+            throw new Error('Login failed');
+          }
+      
+          const data = await response.json();
+          localStorage.setItem('username', data.user);
+          localStorage.setItem('logged_in', 'true');
+          console.log("logged in");
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      }
     function log_out(){
         setUsername('');
         setAdminKey('');
@@ -49,8 +60,8 @@ export function Admin(){
         <input type="text" id="username" name="username" onChange={User_Change}></input>
     <label for="password">Password</label>
         <input type="text" id="password" name="password" onChange={Pass_Change}></input>
-    <label for="Adminkey">Admin key</label>
-        <input type="text" id="Admin" name="Admin" onChange={Key_Change}></input>
+    {/* <label for="Adminkey">Admin key</label> */}
+        {/* <input type="text" id="Admin" name="Admin" onChange={Key_Change}></input> */}
     </div>
     <div className="buttons">
     <button onClick={log_user}>
