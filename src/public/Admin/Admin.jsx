@@ -119,6 +119,7 @@ export function Admin(){
         </button>
     </Link>
     </div>
+    <Chuck />
     </div>
     </main>
     );
