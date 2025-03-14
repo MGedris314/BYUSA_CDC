@@ -22,13 +22,27 @@ apiRouter.post('/register', async (req, res) => {
   res.send({ user: req.body.user });
 });
 
-apiRouter.put('/login', async (req, res) => {
-  const hashedPassword = passwords[req.body.user];
-  if (hashedPassword && (await bcrypt.compare(req.body.password, hashedPassword))) {
-    res.send({ user: req.body.user });
-  } else {
-    res.send(401, { msg: 'invalid user or password' });
+apiRouter.post('/auth/login', async (req, res) => {
+  const user = await find_user('username', req.body.username);
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      user.token = uuid.v4();
+      setAuthCookie(res, user.token);
+      res.send({ email: user.email });
+      return;
+    }
   }
+  res.status(401).send({ msg: 'Unauthorized' });
+});
+
+// DeleteAuth logout a user
+apiRouter.delete('/auth/logout', async (req, res) => {
+  const user = await find_user('token', req.cookies[authCookieName]);
+  if (user) {
+    delete user.token;
+  }
+  res.clearCookie(authCookieName);
+  res.status(204).end();
 });
 
 apiRouter.get('/test', (req, res) => {
