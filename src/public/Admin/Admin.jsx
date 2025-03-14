@@ -15,9 +15,6 @@ export function Admin(){
     const handleUsernameChange = (e) => setUsername(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
     const handleAdminKeyChange = (e) => setAdminKey(e.target.value);
-
-    let registered_users={};
-    const correct_key=8675309;
     
     const Chuck = () => {
         const [joke, set_joke]=useState(null);
@@ -44,58 +41,56 @@ export function Admin(){
         )}
         </div>
     );
-}
+    }
 
-async function register(username, password) {
+    const register = async(username, password) =>{
     if (!username || !password) {
-      console.log('Please enter both a username and a password')
-      return;
+    console.log('Please enter both a username and a password')
+    return;
     }
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user: username, password: password }),
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Registration complete');
-      } else {
-        console.log('User already exists or another error occurred.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
+    const response = await fetch('/api/register', {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user: username, password: password }),
+    });
+
+    if (response.ok) {;
+    console.log('Registration complete');
+    } else {
+    console.log('User already exists or another error occurred.');
     }
-  }
+    } catch (error) {
+    console.error('Error:', error);
+    }
+    }
 
     async function log_user() {
-        try {
-          const response = await fetch('http://localhost:4000/login', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ user: username, password: password })
-          });
-      
-          if (!response.ok) {
-            throw new Error('Login failed');
-          }
-      
-          const data = await response.json();
-          localStorage.setItem('username', data.user);
-          localStorage.setItem('logged_in', 'true');
-          console.log("logged in");
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      }
+    try {
+    const response = await fetch('/api/login', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user: username, password: password })
+    });
+
+    if (!response.ok) {
+    throw new Error('Login failed');
+    }
+
+    const data = await response.json();
+        localStorage.setItem('username', data.user);
+        localStorage.setItem('logged_in', 'true');
+        console.log("logged in");
+    } catch (error) {
+        console.error('Error:', error);
+    }
+    }
     function log_out(){
         setUsername('');
         setAdminKey('');
         setPassword('');
-
         localStorage.setItem('logged_in','false')
     }
     function User_Change(e){
@@ -108,34 +103,34 @@ async function register(username, password) {
         setAdminKey(e.target.value);        
     }
     return( 
-    <main>
-    <div className='body bg-dark text-light'>
-    <div className="Fields">
-    <label for="username">Username</label>
-        <input type="text" id="username" name="username" onChange={User_Change}></input>
-    <label for="password">Password</label>
-        <input type="text" id="password" name="password" onChange={Pass_Change}></input>
-    {/* <label for="Adminkey">Admin key</label> */}
+        <main>
+        <div className='body bg-dark text-light'>
+        <div className="Fields">
+        <label for="username">Username</label>
+            <input type="text" id="username" name="username" onChange={User_Change}></input>
+        <label for="password">Password</label>
+            <input type="text" id="password" name="password" onChange={Pass_Change}></input>
+        {/* <label for="Adminkey">Admin key</label> */}
         {/* <input type="text" id="Admin" name="Admin" onChange={Key_Change}></input> */}
-    </div>
-    <div className="buttons">
-    <button onClick={log_user}>
-        Log in
-    </button>
-    <button onClick={log_out}>
-        log out
-    </button>
-    <button onClick={register}>
-        Register
-    </button>
-    <Link to="/">
+        </div>
+        <div className="buttons">
+        <button onClick={() => log_user()}>
+            Log in
+        </button>
+        <button onClick={log_out}>
+            log out
+        </button>
+        <button onClick={() => register(username, password)}>
+            Register
+        </button>
+        <Link to="/">
         <button>
             Home
         </button>
-    </Link>
-    </div>
-    <Chuck />
-    </div>
-    </main>
-    );
-}
+        </Link>
+        </div>
+            <Chuck />
+        </div>
+        </main>
+        );
+    }
