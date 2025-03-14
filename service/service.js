@@ -10,15 +10,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 app.use(express.static('public'))
 
-
-
 const users = [];
-
-// const user = {
-//   email: email,
-//   password: passwordHash,
-//   token: uuid.v4(),
-// };
 
 //upon adding API change to apiRouter
 var apiRouter = express.Router();
@@ -51,3 +43,21 @@ app.listen(port, () => {
 //  Static middle ware syntax is as follows:
 //  app.use(express.static('name of directory to be used aka root.'))  Objective 2 (10 pts)
 
+async function create_user(username, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    name: username,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  users.push(user);
+
+  return user;
+}
+
+async function find_user(field, value) {
+  if (!value) return null;
+
+  return users.find((u) => u[field] === value);
+}

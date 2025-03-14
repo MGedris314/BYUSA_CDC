@@ -46,15 +46,30 @@ export function Admin(){
     );
 }
 
-    function register(){
-        if (!registered_users[username] && adminKey===correct_key){
-            registered_users[username]=password;
-            console.log("registration complete")
-        }
-        else{
-            console.log("User already exists.")
-        }
+async function register(username, password) {
+    if (!username || !password) {
+      console.log('Please enter both a username and a password')
+      return;
     }
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: username, password: password }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Registration complete');
+      } else {
+        console.log('User already exists or another error occurred.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
     async function log_user() {
         try {
