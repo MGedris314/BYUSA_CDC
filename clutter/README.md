@@ -114,9 +114,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Node.js/Express HTTP service** - Up and running.
 - [x] **Static middleware for frontend** - Up and running.
-- [] **Calls to third party endpoints** - I did not complete this part of the deliverable.
+- [x] **Calls to third party endpoints** - This should be working
 - [x] **Backend service endpoints** - Up and running.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Frontend calls service endpoints** - This should be working
 
 ## 🚀 DB/Login deliverable
 
