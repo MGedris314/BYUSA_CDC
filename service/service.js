@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const authCookieName ='token';
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 app.use(express.static('public'))
@@ -28,7 +29,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
       setAuthCookie(res, user.token);
-      res.send({ email: user.email });
+      res.send({ username: user.username });
       return;
     }
   }

@@ -25,7 +25,8 @@ export function Admin(){
                     const response = await fetch(url);
                     const data = await response.json();
                     set_joke(data);
-                }catch(error){
+                }
+                catch(error){
                     console.log("We have this error, but Chuck Norris doesn't", error);
                 }
             };
@@ -44,41 +45,41 @@ export function Admin(){
     }
 
     const register = async(username, password) =>{
-    if (!username || !password) {
-    console.log('Please enter both a username and a password')
-    return;
-    }
-    try {
-    const response = await fetch('/api/register', {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ user: username, password: password }),
-    });
+        if (!username || !password) {
+        console.log('Please enter both a username and a password')
+        return;
+        }
+        try {
+                const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user: username, password: password }),
+            });
 
-    if (response.ok) {;
-    console.log('Registration complete');
-    } else {
-    console.log('User already exists or another error occurred.');
-    }
-    } catch (error) {
-    console.error('Error:', error);
-    }
+            if (response.ok) {;
+                console.log('Registration complete');
+            } 
+            else {
+                console.log('User already exists or another error occurred.');
+            }
+        } 
+        catch (error) {
+            console.error('Error:', error);
+        }
     }
 
     async function log_user() {
     try {
     const response = await fetch('/api/login', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user: username, password: password })
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: username, password: password })
     });
-
     if (!response.ok) {
-    throw new Error('Login failed');
+     throw new Error('Login failed');
     }
-
     const data = await response.json();
         localStorage.setItem('username', data.user);
         localStorage.setItem('logged_in', 'true');
@@ -87,12 +88,18 @@ export function Admin(){
         console.error('Error:', error);
     }
     }
-    function log_out(){
-        setUsername('');
-        setAdminKey('');
-        setPassword('');
-        localStorage.setItem('logged_in','false')
-    }
+    function log_out() {
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
+  }
     function User_Change(e){
         setUsername(e.target.value);
     }
@@ -117,7 +124,7 @@ export function Admin(){
         <button onClick={() => log_user()}>
             Log in
         </button>
-        <button onClick={log_out}>
+        <button onClick={()=>log_out()}>
             log out
         </button>
         <button onClick={() => register(username, password)}>
