@@ -56,7 +56,11 @@ export function Calandar() {
       }
     };
 
-    const update_event = () => {
+    async function  update_event(){
+      await fetch('/api/auth/editor', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
       if (discription) {
         add_events(date, discription);
         setDiscription('')

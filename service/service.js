@@ -1,6 +1,3 @@
-// Okay In this file (until I learn otherwise) I'm going to be dropping all of my JS code to make this thing run.
-
-//  To start I'll be taking the script from login in class that creates a hashed password, we'll work on storing it later. Objective 6 (30 pts)
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
@@ -13,7 +10,6 @@ app.use(express.static('public'))
 
 const users = [];
 
-//upon adding API change to apiRouter
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
@@ -52,24 +48,22 @@ apiRouter.get('/test', (req, res) => {
 }
 )
 
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: "You aren't authorized to access this.  How'd you get here in the first place?" });
+  }
+};
+
+apiRouter.get('/editor', verifyAuth, (_req, res) =>{
+  res.send("Welcome instructor.")
+})
+
 app.listen(port, () => {
   console.log(`Listening to port ${port}`)
 });
-//  Static middle ware syntax is as follows:
-//  app.use(express.static('name of directory to be used aka root.'))  Objective 2 (10 pts)
-
-async function create_user(username, password) {
-  const passwordHash = await bcrypt.hash(password, 10);
-
-  const user = {
-    name: username,
-    password: passwordHash,
-    token: uuid.v4(),
-  };
-  users.push(user);
-
-  return user;
-}
 
 async function find_user(field, value) {
   if (!value) return null;
