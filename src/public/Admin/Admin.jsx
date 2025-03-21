@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import './Admin.css';
 import { AuthState } from './authState';
 import { log_off } from './authState';
@@ -33,15 +33,15 @@ export function Admin(){
             fetch_chuck();
         }, [])
 
-    return (
-        <div>
-        {joke ? (
-        <pre>{JSON.stringify(joke, null, 2)}</pre>
-        ) : (
-        <p>Loading...</p>
-        )}
-        </div>
-    );
+        return (
+            <div>
+                {joke ? (
+                    <p>{joke.value}</p>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+        );
     }
 
     const register = async(username, password) =>{
@@ -113,9 +113,9 @@ export function Admin(){
         <main>
         <div className='body bg-dark text-light'>
         <div className="Fields">
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
             <input type="text" id="username" name="username" onChange={User_Change}></input>
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
             <input type="text" id="password" name="password" onChange={Pass_Change}></input>
         {/* <label for="Adminkey">Admin key</label> */}
         {/* <input type="text" id="Admin" name="Admin" onChange={Key_Change}></input> */}
@@ -141,3 +141,4 @@ export function Admin(){
         </main>
         );
     }
+// How to run and debug now:  Start up npm run dev, then go to the index.js file and hit f5
