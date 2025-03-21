@@ -2,13 +2,17 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
-const {MongoClient}=require('mongodb')
-const config = require('../db.config.json')
+
 const app = express();
 const authCookieName ='token';
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 app.use(express.static('public'))
+
+
+
+//To fix error, port things over to a new JS file and try from there.
+
 
 const users = [];
 
