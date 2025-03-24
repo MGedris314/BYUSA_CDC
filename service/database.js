@@ -3,11 +3,11 @@ const config = require('../db.config.json')
 
 
 //In order to connect to the database do the following:
-const url = `mongodb+srv://${config.username}:${config.password}:${config.hostname}`;
+const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 
 const client = new MongoClient(url);
 const db = client.db('Country_Night');
-const collection =db.collections('Instructors')
+const collection = db.collection('Instructors');
 
 //This should check the connection of the data base and see if we can connect in.
 (async function test_connection() {

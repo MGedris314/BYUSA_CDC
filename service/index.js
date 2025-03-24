@@ -8,12 +8,6 @@ const authCookieName ='token';
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 app.use(express.static('public'))
-
-
-
-//To fix error, port things over to a new JS file and try from there.
-
-
 const users = [];
 
 var apiRouter = express.Router();
