@@ -9,5 +9,20 @@ const client = new MongoClient(url);
 const db = client.db('Country_Night');
 const collection =db.collections('Instructors')
 
+//This should check the connection of the data base and see if we can connect in.
+(async function test_connection() {
+    try {
+      await db.command({ ping: 1 });
+      console.log(`Connect to database`);
+    } catch (ex) {
+      console.log(`Unable to connect to database with ${url} due to ${ex.message}`);
+      process.exit(1);
+    }
+})();
 
-//See ignore regarding hash
+async function add_admin(user) {
+    await userCollection.insertOne(user);
+}
+
+
+//See testing regarding hash
