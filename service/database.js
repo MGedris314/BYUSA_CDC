@@ -25,7 +25,7 @@ async function add_admin(user) {
 }
 
 function find_user(username){
-    return collection.findOne({ email: email });
+    return collection.findOne({ username: username});
 }
 
 module.exports= {

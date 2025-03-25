@@ -13,13 +13,18 @@ const users = [];
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
-
+//This is the register function.
 apiRouter.post('/register', async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  passwords[req.body.user] = hashedPassword;
-  res.send({ user: req.body.user });
-});
+  if (await findUser('username', req.body.username)) {
+    res.status(409).send({ msg: 'Existing user' });
+  } else {
+    const user = await create_user(req.body.username, req.body.password);
 
+    setAuthCookie(res, user.token);
+    res.send({ email: user.email });
+  }
+});
+//This is the log in function.
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await find_user('username', req.body.username);
   if (user) {
@@ -29,7 +34,6 @@ apiRouter.post('/auth/login', async (req, res) => {
       res.send({ username: user.username });
       return;
     }
-    //Get user goes here
   }
   res.status(401).send({ msg: 'Unauthorized' });
 });
@@ -43,13 +47,13 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   res.clearCookie(authCookieName);
   res.status(204).end();
 });
-
+//This was just a test, probably may want to delete this later.
 apiRouter.get('/test', (req, res) => {
   res.status(200);
   res.send("Hello there");
 }
 )
-
+//This verifies the users
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -71,4 +75,18 @@ async function find_user(field, value) {
   if (!value) return null;
 
   return users.find((u) => u[field] === value);
+}
+
+async function create_user(email, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    email: email,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+
+  await add_admin(user); // Add user to database here
+
+  return user;
 }
