@@ -29,6 +29,7 @@ apiRouter.post('/auth/login', async (req, res) => {
       res.send({ username: user.username });
       return;
     }
+    //Get user goes here
   }
   res.status(401).send({ msg: 'Unauthorized' });
 });

@@ -24,5 +24,13 @@ async function add_admin(user) {
     await userCollection.insertOne(user);
 }
 
+function find_user(username){
+    return collection.findOne({ email: email });
+}
+
+module.exports= {
+    add_admin,
+    find_user
+}
 
 //See testing regarding hash
