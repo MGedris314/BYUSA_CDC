@@ -33,15 +33,15 @@ export function Admin(){
             fetch_chuck();
         }, [])
 
-        return (
-            <div>
-                {joke ? (
-                    <p>{joke.value}</p>
-                ) : (
-                    <p>Loading...</p>
-                )}
-            </div>
-        );
+    return (
+    <div>
+        {joke ? (
+            <p>{joke.value}</p>
+        ) : (
+            <p>Loading...</p>
+        )}
+    </div>
+);
     }
 
     const register = async(username, password) =>{
@@ -50,14 +50,13 @@ export function Admin(){
         return;
         }
         try {
-                const response = await fetch('/api/register', {
+                const response = await fetch('/api/auth/register', {
                 method: 'POST',
+                body: JSON.stringify({ user: username, password: password }),
                 headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ user: username, password: password }),
             });
-
             if (response.ok) {;
                 console.log('Registration complete');
             } 
@@ -72,8 +71,8 @@ export function Admin(){
 
     async function log_user() {
     try {
-    const response = await fetch('/api/login', {
-        method: 'PUT',
+    const response = await fetch('/api/auth/login', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: username, password: password })
     });

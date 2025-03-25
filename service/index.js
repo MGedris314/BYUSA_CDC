@@ -13,20 +13,21 @@ const users = [];
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
 //This is the register function.
-apiRouter.post('/register', async (req, res) => {
+apiRouter.post('/auth/register', async (req, res) => {
   if (await findUser('username', req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await create_user(req.body.username, req.body.password);
+    const user = await create_user(req.body.user, req.body.password);
 
     setAuthCookie(res, user.token);
-    res.send({ email: user.email });
   }
 });
+
 //This is the log in function.
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await find_user('username', req.body.username);
+  const user = await findUser('username', req.body.user);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
@@ -40,7 +41,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
-  const user = await find_user('token', req.cookies[authCookieName]);
+  const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
   }
@@ -71,22 +72,33 @@ app.listen(port, () => {
   console.log(`Listening to port ${port}`)
 });
 
-async function find_user(field, value) {
+async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.find_user(value);
 }
 
-async function create_user(email, password) {
+async function create_user(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
-    email: email,
+    username: username,
     password: passwordHash,
     token: uuid.v4(),
   };
-
-  await add_admin(user); // Add user to database here
+  console.log(username)
+  await DB.add_admin(user); // Add user to database here
 
   return user;
+}
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
 }

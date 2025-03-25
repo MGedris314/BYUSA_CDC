@@ -21,16 +21,21 @@ const collection = db.collection('Instructors');
 })();
 
 async function add_admin(user) {
-    await userCollection.insertOne(user);
+    await collection.insertOne(user);
 }
 
 function find_user(username){
     return collection.findOne({ username: username});
 }
 
+function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+  }
+
 module.exports= {
     add_admin,
-    find_user
+    find_user,
+    getUserByToken
 }
 
 //See testing regarding hash
