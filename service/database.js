@@ -1,5 +1,5 @@
 const {MongoClient}=require('mongodb')
-const config = require('../db.config.json')
+const config = require('./db.config.json')
 
 
 //In order to connect to the database do the following:
