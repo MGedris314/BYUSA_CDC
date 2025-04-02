@@ -105,8 +105,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [x] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I have mapped using Express functions.
+- [x] **Hooks** - I believe I have used hooks correctly, please correct me if I'm wrong.
 
 ## 🚀 Service deliverable
 
@@ -122,11 +122,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **User registration** - Works
-- [x] **User login and logout** - Works
-- [x] **Stores data in MongoDB** - Works
-- [x] **Stores credentials in MongoDB** - Works
-- [x] **Restricts functionality based on authentication** - Works
+- [x] **User registration** - Works and is connected to the database
+- [x] **User login and logout** - Works works with the database
+- [x] **Stores data in MongoDB** - Storage is functioning
+- [x] **Stores credentials in MongoDB** - Storage is working
+- [x] **Restricts functionality based on authentication** - Doesn't allow for changes in a certain place if they aren't an admin.
 
 ## 🚀 WebSocket deliverable
 
