@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const DB=require('./database.js')
+const {peer_proxy} = require('./socket.js')
 
 const app = express();
 const authCookieName ='token';
@@ -68,7 +69,7 @@ apiRouter.get('/editor', verifyAuth, (_req, res) =>{
   res.send("Welcome instructor.")
 })
 
-app.listen(port, () => {
+const httpServer=app.listen(port, () => {
   console.log(`Listening to port ${port}`)
 });
 
@@ -102,3 +103,5 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+peer_proxy(httpServer);
