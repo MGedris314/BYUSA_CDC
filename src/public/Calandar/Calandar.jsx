@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Calendar from 'react-calendar';
 import './Calandar.css';
+import {update_div} from 'Calendar.js'
 
 export function Calandar() {
     const [date, setDate] = useState(new Date());
@@ -9,6 +10,7 @@ export function Calandar() {
     const [discription, setDiscription]=useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [logged_in, setIsloggedIn]=useState(false);
+    const [socket, update_socket]=useState([]);
 
     const add_events =(date, event) =>{
       addevents([...events, {date, event}]);
@@ -82,7 +84,9 @@ export function Calandar() {
         </div>
         <div>
           <p>
-            Websocket updates regarding club announcements and who's teaching that week.
+            This is where the websocket will be.  A couple of things to note:
+            refreshing the page refreshes the events on the calendar so we don't have to overload it.
+            two I don't know if we need to have node running as well, but that's a possibility too.
           </p>
         </div>
         <Link to="/">
