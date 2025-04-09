@@ -34,10 +34,10 @@ constructor() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
     this.socket.onopen = (event) => {
-    this.receiveEvent(new Event_message('Simon', GameEvent.System, { msg: 'connected' }));
+    this.receiveEvent(new Event_message('Simon', web_events.System, { msg: 'connected' }));
     };
     this.socket.onclose = (event) => {
-    this.receiveEvent(new Event_message('Simon', GameEvent.System, { msg: 'disconnected' }));
+    this.receiveEvent(new Event_message('Simon', web_events.System, { msg: 'disconnected' }));
     };
     this.socket.onmessage = async (msg) => {
     try {
@@ -66,7 +66,7 @@ receiveEvent(event) {
     this.events.push(event);
 
     this.handlers.forEach((handler) => {
-        handler(e);
+        handler(handler);
     });
 }
 }

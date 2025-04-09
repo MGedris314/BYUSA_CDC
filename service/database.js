@@ -29,7 +29,7 @@ function find_user(username){
 }
 
 function getUserByToken(token) {
-    return userCollection.findOne({ token: token });
+    return collection.findOne({ token: token });
   }
 
 module.exports= {

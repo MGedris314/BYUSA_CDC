@@ -6,6 +6,7 @@ const DB=require('./database.js')
 const {peer_proxy} = require('./socket.js')
 
 const app = express();
+app.use(cookieParser());
 const authCookieName ='token';
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
@@ -25,6 +26,8 @@ apiRouter.post('/auth/register', async (req, res) => {
     setAuthCookie(res, user.token);
   }
 });
+
+//Find the places where this function is failing.  It's in the find function working through the cookies
 
 //This is the log in function.
 apiRouter.post('/auth/login', async (req, res) => {
@@ -58,6 +61,7 @@ apiRouter.get('/test', (req, res) => {
 //This verifies the users
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
+  console.log(user)
   if (user) {
     next();
   } else {

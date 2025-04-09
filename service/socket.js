@@ -20,7 +20,7 @@ function peer_proxy(httpServer){
         })
     })
     setInterval(() => {
-        socketServer.clients.forEach(function each(client) {
+        sockets.clients.forEach(function each(client) {
           if (client.isAlive === false) return client.terminate();
     
           client.isAlive = false;
