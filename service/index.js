@@ -22,8 +22,8 @@ apiRouter.post('/auth/register', async (req, res) => {
     res.status(409).send({ msg: 'Existing user' });
   } else {
     const user = await create_user(req.body.user, req.body.password);
-
     setAuthCookie(res, user.token);
+    console.log(user.token)
   }
 });
 
@@ -31,11 +31,13 @@ apiRouter.post('/auth/register', async (req, res) => {
 
 //This is the log in function.
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await findUser('username', req.body.user);
+  console.log(req.body.user)
+  const user = await find_user('username', req.body.user);
+  console.log(user)
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
-      setAuthCookie(res, user.token);
+      setAuthCookie(res, user.id);
       res.send({ username: user.username });
       return;
     }
@@ -45,7 +47,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
+  const user = await find_user('username', req.body.username);
   if (user) {
     delete user.token;
   }
@@ -60,14 +62,16 @@ apiRouter.get('/test', (req, res) => {
 )
 //This verifies the users
 const verifyAuth = async (req, res, next) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
+  console.log(req.body);
+  // const user = await find_user(req.body.username);
+  const user=3;
   console.log(user)
   if (user) {
     next();
   } else {
     res.status(401).send({ msg: "You aren't authorized to access this.  How'd you get here in the first place?" });
   }
-};
+};  
 
 apiRouter.get('/editor', verifyAuth, (_req, res) =>{
   res.send("Welcome instructor.")
@@ -77,12 +81,14 @@ const httpServer=app.listen(port, () => {
   console.log(`Listening to port ${port}`)
 });
 
-async function findUser(field, value) {
+async function find_user(field, value) {
+  console.log("Before if check")
   if (!value) return null;
-
-  if (field === 'token') {
+  console.log(value)
+  if (field === 'id') {
     return DB.getUserByToken(value);
   }
+  console.log("Got to line 90")
   return DB.find_user(value);
 }
 
@@ -104,7 +110,7 @@ function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     secure: true,
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'none',
   });
 }
 

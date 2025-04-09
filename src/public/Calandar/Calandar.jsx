@@ -87,12 +87,12 @@ export function Calandar() {
         <div className="img_holder">
           <Calendar onChange={setDate} value={date} onClickDay={change_day} 
           tileContent={render_event} calendarType="gregory" />
-          <p>Selected date: {date.toDateString()}</p>
+          <p>Selected date: </p>
         </div>
         <div>
           {events.map((event, index) => (
             <p key={index}>
-              {event.date.toDateString}:{event.event}</p>
+              {event.event}</p>
           ))}
         </div>
         <Link to="/">

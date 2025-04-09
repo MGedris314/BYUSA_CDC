@@ -21,10 +21,12 @@ const collection = db.collection('Instructors');
 })();
 
 async function add_admin(user) {
+    console.log(user)
     await collection.insertOne(user);
 }
 
 function find_user(username){
+    console.log(username)
     return collection.findOne({ username: username});
 }
 
