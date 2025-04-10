@@ -86,7 +86,7 @@ export function Calandar() {
         add_events(date, discription);
         setDiscription('')
         // websocket broadcast message here.  I think it would look something like
-        // 
+        CallNotifer.broadcastEvent(even)
       }
     }
 

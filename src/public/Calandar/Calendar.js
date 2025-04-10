@@ -73,11 +73,12 @@ function update_div(event){
 console.log(event)   
 }
 
+const CallNotifer=new CallEventNotifier
 CallNotifer.addHandler(update_div)
 
 export function close(){
     modal.style.display="none"
 }
 
-const CallNotifer=new CallEventNotifier
+
 export {CallNotifer, web_events, update_div}
