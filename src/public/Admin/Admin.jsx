@@ -44,6 +44,8 @@ export function Admin(){
 );
     }
 
+    
+
     const register = async(username, password) =>{
         if (!username || !password) {
         console.log('Please enter both a username and a password')

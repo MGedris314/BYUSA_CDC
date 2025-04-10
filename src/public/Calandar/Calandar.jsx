@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Calendar from 'react-calendar';
 import './Calandar.css';
-import {update_div} from './Calendar.js'
+import {update_div, CallNotifer} from './Calendar.js'
 
 export function Calandar() {
     const [date, setDate] = useState(new Date());
@@ -13,6 +13,18 @@ export function Calandar() {
     
     function handle_update(event){
       addevents((prev_events)=>[...prev_events, event]);
+    }
+
+    React.useEffect(()=>{
+      CallNotifer.addHandler(handleEvents);
+
+      return () => {
+        CallNotifer.removeHandler(handleEvents);
+      }
+    })
+
+    function handleEvents(event){
+      addevents([...events, event])
     }
 
     useEffect(()=>{

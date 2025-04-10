@@ -26,25 +26,25 @@ export function edditor(){
 }
 
 class CallEventNotifier {
-events = [];
-handlers = [];
+    events = [];
+    handlers = [];
 
-constructor() {
-    let port = window.location.port;
-    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
-    this.socket.onopen = (event) => {
-    this.receiveEvent(new Event_message('Simon', web_events.System, { msg: 'connected' }));
-    };
-    this.socket.onclose = (event) => {
-    this.receiveEvent(new Event_message('Simon', web_events.System, { msg: 'disconnected' }));
-    };
-    this.socket.onmessage = async (msg) => {
-    try {
-        const event = JSON.parse(await msg.data.text());
-        this.receiveEvent(event);
-    } catch {}
-    };
+    constructor() {
+        let port = window.location.port;
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+        this.socket.onopen = (event) => {
+        this.receiveEvent(new Event_message('Simon', web_events.System, { msg: 'connected' }));
+        };
+        this.socket.onclose = (event) => {
+        this.receiveEvent(new Event_message('Simon', web_events.System, { msg: 'disconnected' }));
+        };
+        this.socket.onmessage = async (msg) => {
+        try {
+            const event = JSON.parse(await msg.data.text());
+            this.receiveEvent(event);
+        } catch {}
+        };
 }
 
 broadcastEvent(from) {
@@ -60,8 +60,6 @@ removeHandler(handler) {
     this.handlers.filter((h) => h !== handler);
 }
 
-
-
 receiveEvent(event) {
     this.events.push(event);
 
@@ -75,11 +73,11 @@ function update_div(event){
 console.log(event)   
 }
 
-const CallNotifer=new CallEventNotifier
 CallNotifer.addHandler(update_div)
 
 export function close(){
     modal.style.display="none"
 }
 
+const CallNotifer=new CallEventNotifier
 export {CallNotifer, web_events, update_div}
