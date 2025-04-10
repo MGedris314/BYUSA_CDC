@@ -4,12 +4,13 @@ import Calendar from 'react-calendar';
 import './Calandar.css';
 import {update_div, CallNotifer} from './Calendar.js'
 
-export function Calandar() {
+export function Calandar(props) {
     const [date, setDate] = useState(new Date());
     const [events, addevents]=useState([]);
     const [discription, setDiscription]=useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [logged_in, setIsloggedIn]=useState(false);
+    const username=props.username
     
     function handle_update(event){
       addevents((prev_events)=>[...prev_events, event]);
@@ -86,7 +87,7 @@ export function Calandar() {
         add_events(date, discription);
         setDiscription('')
         // websocket broadcast message here.  I think it would look something like
-        CallNotifer.broadcastEvent(even)
+        CallNotifer.broadcastEvent(username)
       }
     }
 

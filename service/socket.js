@@ -8,7 +8,7 @@ function peer_proxy(httpServer){
         socket.isAlive=true;
 
         socket.on('message', function message(data) {
-            socketServer.clients.forEach((client) => {
+            sockets.clients.forEach((client) => {
               if (client !== socket && client.readyState === WebSocket.OPEN) {
                 client.send(data);
               }
