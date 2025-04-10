@@ -28,6 +28,12 @@ export function Calandar(props) {
       addevents([...events, event])
     }
 
+    React.useEffect(()=>{
+      fetch('api/calendar_post').catch((error)=>{
+      console.error('Error',error);
+      });
+    })
+
     useEffect(()=>{
       update_div(handle_update);
     },[]);
@@ -51,7 +57,7 @@ export function Calandar(props) {
 
     const render_event = ({date, view}) => {
       if (view === 'month'){
-        console.log("date = " + date);
+        // console.log("date = " + date);
         const day_event = events.filter(event => event.date && event.date.toDateString() === date.toDateString());
         return (
           <ul>

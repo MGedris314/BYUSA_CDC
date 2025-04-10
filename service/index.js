@@ -11,7 +11,7 @@ const authCookieName ='token';
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 app.use(express.static('public'))
-const users = [];
+const event_list = [];
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
@@ -74,6 +74,20 @@ const verifyAuth = async (req, res, next) => {
 };  
 
 
+apiRouter.post('/calendar_post', async (req, res)=>{
+  const {added_ev}=req.body;
+  if (!added_ev){
+    return res.status(400).send("Something went wrong")
+  }
+
+  event_list.push(added_ev)
+  res.status(200).send("It worked")  
+});
+
+//Line 76
+apiRouter.get('/calendar_post', async (req, res)=>{
+  res.send(event_list)
+});
 //Reference index.js of simon.  Update with calendar stuff not scores.
 
 apiRouter.get('/editor', verifyAuth, (_req, res) =>{
