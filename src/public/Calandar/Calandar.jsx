@@ -51,7 +51,8 @@ export function Calandar(props) {
 
     const render_event = ({date, view}) => {
       if (view === 'month'){
-        const day_event = events.filter(event=> event.date.toDateString()===date.toDateString());
+        console.log("date = " + date);
+        const day_event = events.filter(event => event.date && event.date.toDateString() === date.toDateString());
         return (
           <ul>
             {day_event.map((event, index)=>( <li key={index}>{event.event}</li>))}

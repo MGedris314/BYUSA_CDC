@@ -73,6 +73,9 @@ const verifyAuth = async (req, res, next) => {
   }
 };  
 
+
+//Reference index.js of simon.  Update with calendar stuff not scores.
+
 apiRouter.get('/editor', verifyAuth, (_req, res) =>{
   res.send("Welcome instructor.")
 })
