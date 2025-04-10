@@ -25,6 +25,7 @@ export function Calandar(props) {
     })
 
     function handleEvents(event){
+      console.log(event, events, "Did this work?")
       addevents([...events, event])
     }
 
@@ -91,10 +92,12 @@ export function Calandar(props) {
         headers: { 'Content-Type': 'application/json' },
       });
       if (discription) {
+        console.log("in the if statement", props.username)
+        console.log(discription, "This is supposed to be the discriptoin")
         add_events(date, discription);
-        setDiscription('')
+        // setDiscription('')
         // websocket broadcast message here.  I think it would look something like
-        CallNotifer.broadcastEvent(username)
+        CallNotifer.broadcastEvent(add_events, "Sending side")
       }
     }
 

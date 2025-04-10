@@ -42,6 +42,7 @@ class CallEventNotifier {
         this.socket.onmessage = async (msg) => {
         try {
             const event = JSON.parse(await msg.data.text());
+            console.log(event)
             this.receiveEvent(event);
         } catch {}
         };
@@ -63,10 +64,12 @@ removeHandler(handler) {
 receiveEvent(event) {
     this.events.push(event);
 
-    this.handlers.forEach((handler) => {
-        handler(handler);
+    this.events.forEach((e) => {
+      this.handlers.forEach((handler) => {
+        handler(e);
+      });
     });
-}
+  }
 }
 
 function update_div(event){
