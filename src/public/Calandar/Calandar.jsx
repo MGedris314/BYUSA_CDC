@@ -4,6 +4,8 @@ import Calendar from 'react-calendar';
 import './Calandar.css';
 import {update_div, CallNotifer} from './Calendar.js'
 
+//Create a function to loop through events and add them to sytem (calendar.js).  Take a look at simon create message array players.jsx
+
 export function Calandar(props) {
     const [date, setDate] = useState(new Date());
     const [events, addevents]=useState([]);
@@ -34,6 +36,30 @@ export function Calandar(props) {
       console.error('Error',error);
       });
     })
+
+    function message_to_send(){
+      const message_array=[];
+      for (const [i, thing] of events.entries())
+      {
+        let message = 'unknown'
+        if (thing.type === CallNotifer.system && thing.value && thing.msg){
+          message = thing.value.msg;
+        }
+        else{
+          message="Something went wrong";
+          console.log("1401"+discription)
+        }
+
+        message_array.push(
+          <div key={i} className="trigg_event">
+            <span className={'player-event'}>
+              {message}
+            </span>
+          </div>
+        )
+      }
+      return message_array
+    }
 
     useEffect(()=>{
       update_div(handle_update);
@@ -97,7 +123,7 @@ export function Calandar(props) {
         add_events(date, discription);
         // setDiscription('')
         // websocket broadcast message here.  I think it would look something like
-        CallNotifer.broadcastEvent(add_events, "Sending side")
+        CallNotifer.broadcastEvent(discription, "Sending side")
       }
     }
 
@@ -118,6 +144,7 @@ export function Calandar(props) {
               {event.event}</p>
           ))}
         </div>
+        <div>{message_to_send()}</div>
         <Link to="/">
           <button>Home</button>
         </Link>
