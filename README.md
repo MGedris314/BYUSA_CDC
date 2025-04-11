@@ -132,8 +132,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - See Calendar.js, it works
+- [x] **Frontend makes WebSocket connection** - See Calandar.jsx, it works
+- [x] **Data sent over WebSocket connection** - Works successfully.
+- [x] **WebSocket data displayed** - Took the longest of them all, but I did it.
+- [x] **Application is fully functional** - I've got it to where I need it.  If I add to it, it's probably just going to be extra features.

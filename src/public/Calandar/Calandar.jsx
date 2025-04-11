@@ -13,7 +13,7 @@ export function Calandar(props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [logged_in, setIsloggedIn]=useState(false);
     const username=props.username
-    
+
     function handle_update(event){
       addevents((prev_events)=>[...prev_events, event]);
     }
@@ -42,12 +42,13 @@ export function Calandar(props) {
       for (const [i, thing] of events.entries())
       {
         let message = 'unknown'
-        if (thing.type === CallNotifer.system && thing.value && thing.msg){
-          message = thing.value.msg;
+        if (thing.from){
+          message = thing.from;
         }
         else{
           message="Something went wrong";
           console.log("1401"+discription)
+          console.log("structure of thing ", thing.from)
         }
 
         message_array.push(

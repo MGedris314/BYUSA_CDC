@@ -8,8 +8,10 @@ const web_events = {
 };
 
 class Event_message{
-    constructor(from){
+    constructor(from, type, value){
         this.from=from
+        this.type = type;
+        this.value = value;
     }
 }
 export function edditor(){
